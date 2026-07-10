@@ -46,6 +46,10 @@ Desenvolver uma plataforma simples e intuitiva que permita ao administrador gere
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-512BD4?style=for-the-badge&logo=csharp&logoColor=white)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Entity Framework Core](https://img.shields.io/badge/Entity_Framework_Core-512BD4?style=for-the-badge)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
@@ -75,25 +79,53 @@ O sistema foi dividido em dois módulos principais:
 - Categorias
 - Configurações
 
+### Visão Comunicacional do Sistema
+
+```
+Frontend (HTML/CSS/JavaScript)
+            │
+            ▼
+ ASP.NET Core Web API
+            │
+            ▼
+ PostgreSQL (Supabase)
+```
+
 ---
 
 ## Estrutura do Projeto
 
 ```text
-ConfeitariaWeb
+ConfeitariaWeb/
 
 backend/
+│
+└── ConfeitariaWeb/
+    │
+    ├── Controllers/
+    ├── Data/
+    ├── DTOs/
+    ├── Interfaces/
+    ├── Models/
+    ├── Repositories/
+    ├── Services/
+    ├── Helpers/
+    └── Program.cs
 
 docs/
-    banco/
-    wireframes/
-    imagens/
+│
+├── banco/
+├── imagens/
+└── wireframes/
 
 frontend/
-    assets/
-    css/
-    js/
-    pages/
+│
+├── assets/
+├── components/
+├── css/
+├── js/
+├── pages/
+└── index.html
 ```
 
 ---
@@ -102,6 +134,26 @@ frontend/
 
 - [Modelo Conceitual](docs/banco/modelo-conceitual.png)
 - [Schema SQL](docs/banco/schema.sql)
+
+---
+
+## Deploy
+
+Frontend
+
+- Cloudflare Pages
+
+Backend
+
+- Render
+
+Banco de Dados
+
+- Supabase
+
+Domínio
+
+- Registro.br (.com.br)
 
 ---
 
@@ -157,10 +209,12 @@ Durante o desenvolvimento deste projeto foram estudados e aplicados conceitos co
 
 - Modelagem de banco de dados relacional;
 - Planejamento utilizando wireframes;
-- Integração entre Front-end e Supabase;
-- Organização de projetos para clientes reais;
-- Estruturação de documentação técnica;
-- Desenvolvimento incremental utilizando roadmap.
+- Desenvolvimento de API REST com ASP.NET Core;
+- Entity Framework Core;
+- Integração entre API e PostgreSQL (Supabase);
+- Organização de projetos em camadas;
+- Documentação técnica;
+- Estruturação de projetos para clientes reais.
 
 ---
 

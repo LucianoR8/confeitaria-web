@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ConfeitariaWeb.Models
 {
     public class Configuracao
     {
+        [Key]
         public int IdConfiguracao { get; set; }
         public string NomeLoja { get; set; } = string.Empty;
         public string? Facebook { get; set; }

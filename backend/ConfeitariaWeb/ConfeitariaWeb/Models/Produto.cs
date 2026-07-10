@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ConfeitariaWeb.Models
 {
     public class Produto
     {
+        [Key]
         public int IdProduto { get; set; }
         public string NomeProduto { get; set; } = string.Empty;
         public string? DescricaoProduto { get; set; }
