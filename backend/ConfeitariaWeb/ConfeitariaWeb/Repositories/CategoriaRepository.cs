@@ -1,5 +1,7 @@
 using ConfeitariaWeb.Data;
 using ConfeitariaWeb.Repositories.Interface;
+using ConfeitariaWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConfeitariaWeb.Repositories
 {
@@ -10,6 +12,13 @@ namespace ConfeitariaWeb.Repositories
         public CategoriaRepository(AppDbContext context)
         {
             _context = context;
+        }
+
+        public async Task<List<Categoria>> ObterTodasAsync()
+        {
+            return await _context.Categorias
+                .OrderBy(c => c.NomeCategoria)
+                .ToListAsync();
         }
     }
 }
