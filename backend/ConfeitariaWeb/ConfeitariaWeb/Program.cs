@@ -1,4 +1,8 @@
 using ConfeitariaWeb.Data;
+using ConfeitariaWeb.Repositories;
+using ConfeitariaWeb.Repositories.Interface;
+using ConfeitariaWeb.Services;
+using ConfeitariaWeb.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +20,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
 var app = builder.Build();
 

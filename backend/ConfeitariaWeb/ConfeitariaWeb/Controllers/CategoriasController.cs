@@ -1,6 +1,8 @@
 using ConfeitariaWeb.Data;
+using ConfeitariaWeb.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace ConfeitariaWeb.Controllers;
 
@@ -8,18 +10,17 @@ namespace ConfeitariaWeb.Controllers;
 [Route("api/[controller]")]
 public class CategoriasController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly ICategoriaService _categoriaService;
 
-    public CategoriasController(AppDbContext context)
+    public CategoriasController(ICategoriaService categoriaService)
     {
-        _context = context;
+        _categoriaService = categoriaService;
     }
 
     [HttpGet]
-    public async Task<IActionResult> Listar()
+    public async Task<ActionResult> Listar()
     {
-        var categorias = await _context.Categorias.ToListAsync();
-
+        var categorias = await _categoriaService.ObterTodasAsync();
         return Ok(categorias);
     }
 }

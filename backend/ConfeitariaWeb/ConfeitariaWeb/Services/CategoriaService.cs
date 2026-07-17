@@ -21,21 +21,33 @@ namespace ConfeitariaWeb.Services
 
         public async Task AdicionarAsync(Categoria categoria)
         {
-            // Validar nome - categoria = null
+            if(categoria == null)
+            {
+                throw new ArgumentNullException(nameof(categoria));
+            }
 
-            // Remover espaços - trim()
+            if (string.IsNullOrWhiteSpace(categoria.NomeCategoria))
+            {
+                throw new ArgumentException("O nome da categoria é obrigatório.");
+            }
+            
+            categoria.NomeCategoria = categoria.NomeCategoria.Trim();
 
-            // Validar novamente
+            if (categoria.NomeCategoria.Length > 20)
+            {
+                throw new ArgumentException("O nome da categoria deve possuir menos de 100 caracteres.");
+            }
 
-            // Verificar tamanho
+            if (await _categoriaRepository.ExistePorNomeAsync(categoria.NomeCategoria))
+            { 
+                throw new ArgumentException("O nome dessa categoria já existe.", nameof(categoria.NomeCategoria)); 
+            }
 
-            // Verificar duplicidade
-
-            // Adicionar - _repository
-
-            // Salvar - _repository
+            await _categoriaRepository.AdicionarAsync(categoria);
+            await _categoriaRepository.SalvarAlteracoesAsync();
         }
 
+        /* 
         public Task<Categoria?> ObterPorIdAsync(int id)
         {
             
@@ -49,5 +61,6 @@ namespace ConfeitariaWeb.Services
         {
 
         }
+        */
     }
 }
