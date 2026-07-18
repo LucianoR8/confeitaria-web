@@ -9,7 +9,7 @@ namespace ConfeitariaWeb.Repositories.Interface
 
         Task<Categoria?> ObterPorIdAsync(int id);
 
-        Task<bool> ExistePorNomeAsync(string nome);
+        Task<bool> ExistePorNomeAsync(string nome, int? ignorarId = null);
 
         Task<bool> PossuiProdutosAsync(int categoriaId);
 

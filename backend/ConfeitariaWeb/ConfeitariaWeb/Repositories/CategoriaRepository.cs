@@ -27,10 +27,10 @@ namespace ConfeitariaWeb.Repositories
                 .FirstOrDefaultAsync(c => c.IdCategoria == id);
         }
 
-        public async Task<bool> ExistePorNomeAsync(string nome)
+        public async Task<bool> ExistePorNomeAsync(string nome, int? ignorarId = null)
         {
             return await _context.Categorias
-                .AnyAsync(c => c.NomeCategoria == nome);
+                .AnyAsync(c => c.NomeCategoria == nome && (!ignorarId.HasValue || c.IdCategoria != ignorarId.Value));
         }
 
         public async Task<bool> PossuiProdutosAsync(int categoriaId)

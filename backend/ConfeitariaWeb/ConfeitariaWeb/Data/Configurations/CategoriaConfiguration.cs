@@ -19,7 +19,9 @@ public class CategoriaConfiguration : IEntityTypeConfiguration<Categoria>
                .HasColumnName("nome_categoria");
 
         builder.Property(c => c.CriadoEm)
-               .HasColumnName("criado_em");
+                .HasColumnName("criado_em")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .ValueGeneratedOnAdd();
 
         builder.Property(c => c.AtualizadoEm)
                .HasColumnName("atualizado_em");
