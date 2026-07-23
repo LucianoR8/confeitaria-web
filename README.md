@@ -173,11 +173,11 @@ Domínio
 - [ ] Página Inicial
 - [ ] Página de Categoria
 - [ ] Página de Produto
-- [ ] Integração com Supabase
+- [x] Integração com Supabase
 - [ ] Login Administrativo
 - [ ] Dashboard
-- [ ] CRUD de Produtos
-- [ ] CRUD de Categorias
+- [x] CRUD de Produtos
+- [x] CRUD de Categorias
 - [ ] Configurações da Loja
 
 ### Publicação

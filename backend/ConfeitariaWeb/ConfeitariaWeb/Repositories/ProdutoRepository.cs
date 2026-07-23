@@ -45,9 +45,9 @@ namespace ConfeitariaWeb.Repositories
                 .AnyAsync(c => c.IdCategoria == categoriaId);
         }
 
-        public async Task<int> ObterQuantidadeDestaquesAsync()
+        public async Task<int> ObterQuantidadeDestaquesAsync(int? ignorarId = null)
         {
-            return await _context.Produtos.CountAsync(p => p.Destaque);
+            return await _context.Produtos.CountAsync(p => p.Destaque && (!ignorarId.HasValue || p.IdProduto != ignorarId.Value));
         }
 
         public async Task AdicionarAsync(Produto produto)

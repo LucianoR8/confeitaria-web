@@ -27,6 +27,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 var mapperConfig = new MapperConfiguration(cfg =>
 {
     cfg.AddProfile<CategoriaProfile>();
+    cfg.AddProfile<ProdutoProfile>();
 }, NullLoggerFactory.Instance);
 
 IMapper mapper = mapperConfig.CreateMapper();
@@ -34,7 +35,10 @@ IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
 
 var app = builder.Build();
 
