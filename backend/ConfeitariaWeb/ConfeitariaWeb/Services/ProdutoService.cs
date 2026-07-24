@@ -4,6 +4,7 @@ using ConfeitariaWeb.DTOs.Categoria;
 using ConfeitariaWeb.Models;
 using ConfeitariaWeb.Repositories;
 using ConfeitariaWeb.Repositories.Interface;
+using ConfeitariaWeb.Repositories.Interfaces;
 using ConfeitariaWeb.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,11 +13,13 @@ namespace ConfeitariaWeb.Services
     public class ProdutoService : IProdutoService
     {
         private readonly IProdutoRepository _produtoRepository;
+        private readonly IConfiguracaoRepository _configuracaoRepository;
         private readonly IMapper _mapper;
 
-        public ProdutoService(IProdutoRepository produtoRepository, IMapper mapper)
+        public ProdutoService(IProdutoRepository produtoRepository, IConfiguracaoRepository configuracaoRepository, IMapper mapper)
         {
             _produtoRepository = produtoRepository;
+            _configuracaoRepository = configuracaoRepository;
             _mapper = mapper;
         }
 
@@ -241,9 +244,13 @@ namespace ConfeitariaWeb.Services
 
             var quantidade = await _produtoRepository.ObterQuantidadeDestaquesAsync();
 
-            if (quantidade >= 9)
+            var configuracao = await _configuracaoRepository.ObterAsync();
+
+            var limite = configuracao?.QuantidadeMaximaDestaques ?? 9;
+
+            if(quantidade >= limite)
             {
-                throw new ArgumentException("Você deve possuir no máximo 9 produtos em destaque.");
+                throw new ArgumentException($"Você deve possuir no máximo {limite} produtos em destaque");
             }
 
         }
