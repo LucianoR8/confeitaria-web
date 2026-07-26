@@ -19,6 +19,11 @@ namespace ConfeitariaWeb.Repositories
             return await _context.Usuarios.FirstOrDefaultAsync(u =>u.Email == email);
         }
 
+        public async Task<bool> ExisteUsuarioAsync()
+        {
+            return await _context.Usuarios.AnyAsync();
+        }
+
         public async Task AdicionarAsync(Usuario usuario)
         {
            await _context.Usuarios.AddAsync(usuario);
@@ -26,7 +31,7 @@ namespace ConfeitariaWeb.Repositories
 
         public async Task SalvarAlteracoesAsync()
         {
-            await _context.Usuarios.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

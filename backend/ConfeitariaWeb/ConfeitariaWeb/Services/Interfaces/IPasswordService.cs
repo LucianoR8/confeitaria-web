@@ -4,9 +4,9 @@ using ConfeitariaWeb.DTOs.Auth;
 
 namespace ConfeitariaWeb.Services.Interfaces
 {
-    public interface IAuthService
+    public interface IPasswordService
     {
-        Task<LoginResponseDto> LoginAsync(LoginRequestDto dto);
-        Task CriarAdministradorAsync();
+        string HashPassword(string senha);
+        bool VerifyPassword(string senha, string senhaHash);
     }
 }
