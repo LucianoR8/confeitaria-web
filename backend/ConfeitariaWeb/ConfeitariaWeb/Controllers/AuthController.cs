@@ -1,9 +1,10 @@
-﻿using ConfeitariaWeb.Services.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using ConfeitariaWeb.Data;
+﻿using ConfeitariaWeb.Data;
 using ConfeitariaWeb.DTOs.Auth;
 using ConfeitariaWeb.DTOs.Configuracao;
 using ConfeitariaWeb.Services.Interface;
+using ConfeitariaWeb.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.InteropServices;
 
@@ -21,6 +22,7 @@ namespace ConfeitariaWeb.Controllers
         }
 
         [HttpPost("login")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<LoginResponseDto>> Login(LoginRequestDto dto)
         {
             var resultado = await _authService.LoginAsync(dto);

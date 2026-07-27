@@ -2,6 +2,7 @@
 using ConfeitariaWeb.DTOs;
 using ConfeitariaWeb.DTOs.Categoria;
 using ConfeitariaWeb.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -57,6 +58,7 @@ namespace ConfeitariaWeb.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProdutoResponseDto>> Adicionar(ProdutoCreateDto dto)
         {
             var produto = await _produtoService.AdicionarAsync(dto);
@@ -65,6 +67,7 @@ namespace ConfeitariaWeb.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProdutoResponseDto>> Atualizar(int id, ProdutoUpdateDto dto)
         {
             var produto = await _produtoService.AtualizarAsync(id, dto);
@@ -73,6 +76,7 @@ namespace ConfeitariaWeb.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Remover(int id)
         {
             await _produtoService.RemoverAsync(id);

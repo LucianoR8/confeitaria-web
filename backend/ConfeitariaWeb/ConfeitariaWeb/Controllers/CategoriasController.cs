@@ -1,6 +1,7 @@
 using ConfeitariaWeb.Data;
 using ConfeitariaWeb.DTOs.Categoria;
 using ConfeitariaWeb.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -39,6 +40,7 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Adicionar(CategoriaCreateDto dto)
     {
         var categoriaCriada = await _categoriaService.AdicionarAsync(dto);
@@ -47,6 +49,7 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Atualizar(int id, CategoriaUpdateDto dto)
     {
         var categoriaAtualizada = await _categoriaService.AtualizarAsync(id, dto);
@@ -55,6 +58,7 @@ public class CategoriasController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Remover(int id)
     {
         await _categoriaService.RemoverAsync(id);

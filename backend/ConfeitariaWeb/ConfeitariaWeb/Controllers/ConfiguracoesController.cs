@@ -5,6 +5,7 @@ using ConfeitariaWeb.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ConfeitariaWeb.Controllers
 {
@@ -33,6 +34,7 @@ namespace ConfeitariaWeb.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Atualizar([FromBody] ConfiguracaoUpdateDto dto)
         {
             var configuracaoAtualizada = await _configuracaoService.AtualizarAsync(dto);
