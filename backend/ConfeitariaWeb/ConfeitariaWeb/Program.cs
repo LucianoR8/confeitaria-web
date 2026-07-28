@@ -1,5 +1,7 @@
+using AutoMapper;
 using ConfeitariaWeb.Data;
 using ConfeitariaWeb.Extensions;
+using ConfeitariaWeb.Mappings;
 using ConfeitariaWeb.Models.Settings;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +21,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.Configure<AdminSettings>(
     builder.Configuration.GetSection("Admin"));
 
+builder.Services.AddApplicationMappings();
 builder.Services.AddApplicationServices();
 builder.Services.AddJwtAuthentication(builder.Configuration);
 

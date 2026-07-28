@@ -22,7 +22,6 @@ namespace ConfeitariaWeb.Controllers
         }
 
         [HttpPost("login")]
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<LoginResponseDto>> Login(LoginRequestDto dto)
         {
             var resultado = await _authService.LoginAsync(dto);
