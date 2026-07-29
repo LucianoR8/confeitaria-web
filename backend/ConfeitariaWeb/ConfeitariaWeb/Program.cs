@@ -20,6 +20,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.Configure<AdminSettings>(
     builder.Configuration.GetSection("Admin"));
+builder.Services.Configure<StorageSettings>(
+    builder.Configuration.GetSection("Storage"));
 
 builder.Services.AddApplicationMappings();
 builder.Services.AddApplicationServices();

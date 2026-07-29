@@ -6,7 +6,7 @@ namespace ConfeitariaWeb.DTOs.Categoria
         public string DescricaoProduto { get; set; } = string.Empty;
         public decimal Preco { get; set; }
         public bool Destaque { get; set; }
-        public string ImagemUrl { get; set; } = string.Empty;
+        public IFormFile? Imagem { get; set; }
         public string PrazoEntrega { get; set; } = string.Empty;
         public bool Ativo { get; set; }
         public int CategoriaId { get; set; }

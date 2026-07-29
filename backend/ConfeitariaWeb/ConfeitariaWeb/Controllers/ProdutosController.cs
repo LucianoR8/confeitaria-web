@@ -59,7 +59,8 @@ namespace ConfeitariaWeb.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<ProdutoResponseDto>> Adicionar(ProdutoCreateDto dto)
+        [Consumes("multipart/form-data")]
+        public async Task<ActionResult<ProdutoResponseDto>> Adicionar([FromForm] ProdutoCreateDto dto)
         {
             var produto = await _produtoService.AdicionarAsync(dto);
 
@@ -68,7 +69,8 @@ namespace ConfeitariaWeb.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<ProdutoResponseDto>> Atualizar(int id, ProdutoUpdateDto dto)
+        [Consumes("multipart/form-data")]
+        public async Task<ActionResult<ProdutoResponseDto>> Atualizar(int id,[FromForm] ProdutoUpdateDto dto)
         {
             var produto = await _produtoService.AtualizarAsync(id, dto);
 

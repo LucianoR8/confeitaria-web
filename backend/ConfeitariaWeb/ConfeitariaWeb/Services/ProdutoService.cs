@@ -6,7 +6,9 @@ using ConfeitariaWeb.Repositories;
 using ConfeitariaWeb.Repositories.Interface;
 using ConfeitariaWeb.Repositories.Interfaces;
 using ConfeitariaWeb.Services.Interface;
+using ConfeitariaWeb.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using ConfeitariaWeb.Constants;
 
 namespace ConfeitariaWeb.Services
 {
@@ -15,12 +17,14 @@ namespace ConfeitariaWeb.Services
         private readonly IProdutoRepository _produtoRepository;
         private readonly IConfiguracaoRepository _configuracaoRepository;
         private readonly IMapper _mapper;
+        private readonly IImageStorageService _imageStorageService;
 
-        public ProdutoService(IProdutoRepository produtoRepository, IConfiguracaoRepository configuracaoRepository, IMapper mapper)
+        public ProdutoService(IProdutoRepository produtoRepository, IConfiguracaoRepository configuracaoRepository, IMapper mapper, IImageStorageService imageStorageService)
         {
             _produtoRepository = produtoRepository;
             _configuracaoRepository = configuracaoRepository;
             _mapper = mapper;
+            _imageStorageService = imageStorageService;
         }
 
         private async Task<string> ValidarNomeProdutoAsync(string nomeProduto, int? ignorarId = null)
@@ -52,7 +56,6 @@ namespace ConfeitariaWeb.Services
 
             var nomeProduto = await ValidarNomeProdutoAsync(dto.NomeProduto);
             var descricao = ValidarDescricaoProduto(dto.DescricaoProduto);
-            var imagem = ValidarImagem(dto.ImagemUrl);
             var preco = ValidarPreco(dto.Preco);
             var prazoEntrega = ValidarPrazoEntrega(dto.PrazoEntrega);
 
@@ -65,12 +68,22 @@ namespace ConfeitariaWeb.Services
 
             produto.NomeProduto = nomeProduto;
             produto.DescricaoProduto = descricao;
-            produto.ImagemUrl = imagem;
             produto.Preco = preco;
             produto.PrazoEntrega = prazoEntrega;
             produto.Slug = slug;
             produto.CriadoEm = DateTime.UtcNow;
-            
+
+            if (dto.Imagem is not null)
+            {
+                produto.ImagemUrl =
+                    await _imageStorageService.UploadImageAsync(
+                        dto.Imagem,
+                        StorageFolders.Products);
+            }
+
+
+
+
 
             await _produtoRepository.AdicionarAsync(produto);
             await _produtoRepository.SalvarAlteracoesAsync();
@@ -127,7 +140,6 @@ namespace ConfeitariaWeb.Services
 
             var nomeProduto = await ValidarNomeProdutoAsync(dto.NomeProduto, id);
             var descricao = ValidarDescricaoProduto(dto.DescricaoProduto);
-            var imagem = ValidarImagem(dto.ImagemUrl);
             var preco = ValidarPreco(dto.Preco);
             var prazoEntrega = ValidarPrazoEntrega(dto.PrazoEntrega);
 
@@ -140,11 +152,23 @@ namespace ConfeitariaWeb.Services
 
             produto.NomeProduto = nomeProduto;
             produto.DescricaoProduto = descricao;
-            produto.ImagemUrl = imagem;
             produto.Preco = preco;
             produto.PrazoEntrega = prazoEntrega;
             produto.Slug = slug;
             produto.AtualizadoEm = DateTime.UtcNow;
+
+            if (dto.Imagem is not null)
+            {
+                if (!string.IsNullOrWhiteSpace(produto.ImagemUrl))
+                {
+                    await _imageStorageService.DeleteImageAsync(produto.ImagemUrl);
+                }
+
+                produto.ImagemUrl =
+                    await _imageStorageService.UploadImageAsync(
+                        dto.Imagem,
+                        StorageFolders.Products);
+            }
 
 
             _produtoRepository.Atualizar(produto);
@@ -160,6 +184,11 @@ namespace ConfeitariaWeb.Services
             if (produto == null)
             {
                 throw new KeyNotFoundException("Produto não encontrado.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(produto.ImagemUrl))
+            {
+                await _imageStorageService.DeleteImageAsync(produto.ImagemUrl);
             }
 
             _produtoRepository.Remover(produto);
@@ -191,7 +220,8 @@ namespace ConfeitariaWeb.Services
             return preco;
         }
 
-        private string ValidarImagem(string imagemUrl)
+        /*
+        private string ValidarImagem(IFormFile ou string aqui imagemUrl)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(imagemUrl);
 
@@ -212,6 +242,8 @@ namespace ConfeitariaWeb.Services
             return imagemUrl;
 
         }
+
+        */
 
         private string ValidarPrazoEntrega(string prazoEntrega)
         {

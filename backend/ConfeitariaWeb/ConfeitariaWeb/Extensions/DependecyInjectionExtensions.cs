@@ -23,6 +23,7 @@ public static class DependencyInjectionExtensions
         services.AddScoped<IConfiguracaoService, ConfiguracaoService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IPasswordService, PasswordService>();
+        services.AddHttpClient<IImageStorageService, ImageStorageService>();
 
         return services;
     }

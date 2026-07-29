@@ -11,7 +11,9 @@ namespace ConfeitariaWeb.Mappings
         {
             CreateMap<Produto, ProdutoResponseDto>().ForMember(dest => dest.NomeCategoria,
         opt => opt.MapFrom(src => src.Categoria.NomeCategoria));
-            CreateMap<ProdutoCreateDto, Produto>();
+            CreateMap<ProdutoCreateDto, Produto>()
+    .ForMember(dest => dest.ImagemUrl,
+        opt => opt.Ignore());
             CreateMap<ProdutoUpdateDto, Produto>();
         }
     }
