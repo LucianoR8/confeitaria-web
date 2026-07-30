@@ -35,7 +35,8 @@ namespace ConfeitariaWeb.Controllers
 
         [HttpPut]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Atualizar([FromBody] ConfiguracaoUpdateDto dto)
+        [Consumes("multipart/form-data")]
+        public async Task<ActionResult> Atualizar([FromForm] ConfiguracaoUpdateDto dto)
         {
             var configuracaoAtualizada = await _configuracaoService.AtualizarAsync(dto);
 

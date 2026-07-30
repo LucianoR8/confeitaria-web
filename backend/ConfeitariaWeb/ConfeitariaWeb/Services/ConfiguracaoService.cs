@@ -1,7 +1,9 @@
 using AutoMapper;
+using ConfeitariaWeb.Constants;
 using ConfeitariaWeb.DTOs.Configuracao;
 using ConfeitariaWeb.Repositories.Interfaces;
 using ConfeitariaWeb.Services.Interface;
+using ConfeitariaWeb.Services.Interfaces;
 using System.Net.Mail;
 
 namespace ConfeitariaWeb.Services
@@ -10,11 +12,13 @@ namespace ConfeitariaWeb.Services
     {
         private readonly IConfiguracaoRepository _configuracaoRepository;
         private readonly IMapper _mapper;
+        private readonly IImageStorageService _imageStorageService;
 
-        public ConfiguracaoService(IConfiguracaoRepository configuracaoRepository, IMapper mapper)
+        public ConfiguracaoService(IConfiguracaoRepository configuracaoRepository, IMapper mapper, IImageStorageService imageStorageService)
         {
             _configuracaoRepository = configuracaoRepository;
             _mapper = mapper;
+            _imageStorageService = imageStorageService;
         }
 
         public async Task<ConfiguracaoResponseDto?> ObterAsync()
@@ -45,9 +49,6 @@ namespace ConfeitariaWeb.Services
             var whatsapp = ValidarWhatsApp(dto.WhatsApp);
             var email = ValidarEmail(dto.Email);
             var endereco = ValidarEndereco(dto.Endereco);
-            var logoUrl = ValidarUrl(dto.LogoUrl);
-            var iconeUrl = ValidarUrl(dto.IconeUrl);
-            var bannerUrl = ValidarUrl(dto.BannerUrl);
             var quantidade = ValidarQuantidadeDestaques(dto.QuantidadeMaximaDestaques);
 
             ValidarHorario(dto.AbreAs, dto.FechaAs);
@@ -58,12 +59,50 @@ namespace ConfeitariaWeb.Services
             configuracao.Telefone = telefone;
             configuracao.WhatsApp = whatsapp;
             configuracao.Email = email;
+            configuracao.Facebook = ValidarUrl(dto.Facebook);
+            configuracao.Facebook = ValidarUrl(dto.Instagram);
             configuracao.Endereco = endereco;
-            configuracao.LogoUrl = logoUrl;
-            configuracao.IconeUrl = iconeUrl;
-            configuracao.BannerUrl = bannerUrl;
             configuracao.QuantidadeMaximaDestaques = quantidade;
             configuracao.AtualizadoEm = DateTime.UtcNow;
+
+            if (dto.Logo is not null)
+            {
+                if (!string.IsNullOrWhiteSpace(configuracao.LogoUrl))
+                {
+                    await _imageStorageService.DeleteImageAsync(configuracao.LogoUrl);
+                }
+
+                configuracao.LogoUrl =
+                    await _imageStorageService.UploadImageAsync(
+                        dto.Logo,
+                        StorageFolders.Logos);
+            }
+
+            if (dto.Banner is not null)
+            {
+                if (!string.IsNullOrWhiteSpace(configuracao.BannerUrl))
+                {
+                    await _imageStorageService.DeleteImageAsync(configuracao.BannerUrl);
+                }
+
+                configuracao.BannerUrl =
+                    await _imageStorageService.UploadImageAsync(
+                        dto.Banner,
+                        StorageFolders.Banners);
+            }
+
+            if (dto.Icone is not null)
+            {
+                if (!string.IsNullOrWhiteSpace(configuracao.IconeUrl))
+                {
+                    await _imageStorageService.DeleteImageAsync(configuracao.IconeUrl);
+                }
+
+                configuracao.IconeUrl =
+                    await _imageStorageService.UploadImageAsync(
+                        dto.Icone,
+                        StorageFolders.Icons);
+            }
 
             _configuracaoRepository.Atualizar(configuracao);
             await _configuracaoRepository.SalvarAlteracoesAsync();
