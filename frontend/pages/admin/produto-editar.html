@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Editar Produto</title>
+
+    <link rel="stylesheet" href="/frontend/css/produto-editar.css">
+
+</head>
+
+<body>
+
+   <header>
+
+    <button id="btnVoltar">
+        ← Voltar
+    </button>
+
+    <h1>Editar Produto</h1>
+
+</header>
+
+<main>
+
+<form id="formProduto">
+
+    <section>
+
+        <h2>Imagem</h2>
+
+        <img
+            id="imagemAtual"
+            src=""
+            alt="Imagem do produto">
+
+        <input
+            type="file"
+            id="imagem"
+            accept=".jpg,.jpeg,.png,.webp">
+
+    </section>
+
+    <section>
+
+        <label for="nomeProduto">
+
+            Nome
+
+        </label>
+
+        <input
+            type="text"
+            id="nomeProduto">
+
+    </section>
+
+    <section>
+
+        <label for="descricaoProduto">
+
+            Descrição
+
+        </label>
+
+        <textarea
+            id="descricaoProduto"
+            rows="5">
+
+        </textarea>
+
+    </section>
+
+    <section>
+
+        <label for="preco">
+
+            Preço
+
+        </label>
+
+        <input
+            type="number"
+            id="preco"
+            step="0.01">
+
+    </section>
+
+    <section>
+
+        <label for="categoriaId">
+
+            Categoria
+
+        </label>
+
+        <select id="categoriaId">
+
+        </select>
+
+    </section>
+
+    <section>
+
+        <label for="prazoEntrega">
+
+            Prazo de entrega
+
+        </label>
+
+        <select id="prazoEntrega">
+
+    <option value="30 minutos">
+        30 minutos
+    </option>
+
+    <option value="1 hora">
+        1 hora
+    </option>
+
+    <option value="2 horas">
+        2 horas
+    </option>
+
+    <option value="24 horas">
+        24 horas
+    </option>
+
+    <option value="2 dias">
+        2 dias
+    </option>
+
+    <option value="3 dias">
+        3 dias
+    </option>
+
+    <option value="5 dias úteis">
+        5 dias úteis
+    </option>
+
+</select>
+
+    </section>
+
+    <section>
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="ativo">
+
+            Produto ativo
+
+        </label>
+
+    </section>
+
+    <section>
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="destaque">
+
+            Produto destaque
+
+        </label>
+
+    </section>
+
+    <button
+        type="submit"
+        id="btnSalvar">
+
+        Salvar Alterações
+
+    </button>
+
+    <button
+        type="button"
+        id="btnExcluir">
+
+        Excluir Produto
+
+    </button>
+
+</form>
+
+</main>
+
+    <script type="module" src="/frontend/js/produto-editar.js"></script>
+
+</body>
+
+</html>

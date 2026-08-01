@@ -30,13 +30,18 @@ async function carregarProdutos(){
 
         listaProdutos.appendChild(coluna);
 
-        
+        coluna.addEventListener("click", () => {
+            window.location.href = `produto-editar.html?id=${produto.idProduto}`;
+        });
+
     }
 
     
 
     console.log(produtos);
 }
+
+
 
 carregarProdutos();
 
