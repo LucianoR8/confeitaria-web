@@ -108,5 +108,9 @@ formProduto.addEventListener("submit", async (event) => {
     catch(erro){
         alert(erro.message);
     }
+    finally{
+        btnSalvar.disabled = false;
+        btnSalvar.textContent = "Cadastrar  Produto";
+    }
 
 });

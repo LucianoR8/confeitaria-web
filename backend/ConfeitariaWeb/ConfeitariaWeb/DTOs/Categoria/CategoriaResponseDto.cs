@@ -4,5 +4,6 @@ namespace ConfeitariaWeb.DTOs
     {
         public int IdCategoria { get; set; }
         public string NomeCategoria { get; set; } = string.Empty;
+        public int QuantidadeProdutos { get; set; }
     }
 }

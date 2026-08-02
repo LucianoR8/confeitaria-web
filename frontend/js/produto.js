@@ -7,6 +7,7 @@ const listaProdutos = document.getElementById("listaProdutos");
 
 async function carregarProdutos(){
 
+    try{
     const produtos = await get("/produtos");
 
     listaProdutos.innerHTML = "";
@@ -36,7 +37,11 @@ async function carregarProdutos(){
 
     }
 
-    
+}
+catch(erro){
+    console.error(erro);
+    alert(erro.message);
+}
 
     console.log(produtos);
 }

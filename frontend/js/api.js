@@ -101,7 +101,7 @@ export async function del(endpoint){
 
             return;
         }
-        
+
         if(!response.ok){
 
             const erro = await response.text();
@@ -109,10 +109,17 @@ export async function del(endpoint){
             throw new Error(erro);
         }
 
-        
-        return await response.json();
+        return await parseResponse(response);
 
      
+}
+
+async function parseResponse(response){
+    if(response.status == 204){
+            return;
+        }
+        
+        return await response.json();
 }
 
 function getHeaders(isFormData = false){

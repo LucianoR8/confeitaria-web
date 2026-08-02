@@ -9,7 +9,11 @@ namespace ConfeitariaWeb.Mappings
     {
         public CategoriaProfile()
         {
-            CreateMap<Categoria, CategoriaResponseDto>();
+            CreateMap<Categoria, CategoriaResponseDto>()
+            .ForMember(
+                dest => dest.QuantidadeProdutos,
+                opt => opt.MapFrom(src => src.Produtos.Count)
+            );
             CreateMap<CategoriaCreateDto, Categoria>();
             CreateMap<CategoriaUpdateDto, Categoria>();
         }

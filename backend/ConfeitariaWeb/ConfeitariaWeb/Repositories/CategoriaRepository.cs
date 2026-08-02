@@ -17,6 +17,8 @@ namespace ConfeitariaWeb.Repositories
         public async Task<List<Categoria>> ObterTodasAsync()
         {
             return await _context.Categorias
+                .AsNoTracking()
+                .Include(c => c.Produtos)
                 .OrderBy(c => c.NomeCategoria)
                 .ToListAsync();
         }
