@@ -92,6 +92,16 @@ export async function del(endpoint){
 
         const response = await fetch(url, options);
 
+        if(response.status == 401){
+            localStorage.clear();
+
+            alert("Sua sessão expirou. Faça login novamente.");
+
+            window.location.href = "/frontend/pages/admin/login.html";
+
+            return;
+        }
+        
         if(!response.ok){
 
             const erro = await response.text();
@@ -99,6 +109,7 @@ export async function del(endpoint){
             throw new Error(erro);
         }
 
+        
         return await response.json();
 
      

@@ -41,6 +41,11 @@ async function carregarProdutos(){
     console.log(produtos);
 }
 
+const btnNovoProduto = document.getElementById("btnNovoProduto");
+
+btnNovoProduto.addEventListener("click", () => {
+    window.location.href = "produto-novo.html";
+});
 
 
 carregarProdutos();
