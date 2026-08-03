@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Configurações</title>
+
+    <link rel="stylesheet"
+          href="/frontend/css/configuracoes.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <button id="btnVoltar">
+        ← Voltar
+    </button>
+
+    <h1>Configurações</h1>
+
+</header>
+
+<main>
+
+<form id="formConfiguracao">
+
+    <div class="config-imagens">
+
+        <div class="imagem-card">
+
+            <h2>Logo</h2>
+
+            <img
+                id="logoAtual"
+                src=""
+                alt="Logo">
+
+            <input
+                type="file"
+                id="logo"
+                accept=".png,.jpg,.jpeg,.webp">
+
+        </div>
+
+        <div class="imagem-card">
+
+            <h2>Ícone</h2>
+
+            <img
+                id="iconeAtual"
+                src=""
+                alt="Ícone">
+
+            <input
+                type="file"
+                id="icone"
+                accept=".png,.jpg,.jpeg,.webp">
+
+        </div>
+
+    </div>
+
+    <section>
+
+        <h2>Banner</h2>
+
+        <img
+            id="bannerAtual"
+            src=""
+            alt="Banner">
+
+        <input
+            type="file"
+            id="banner"
+            accept=".png,.jpg,.jpeg,.webp">
+
+    </section>
+
+    <section class="dados">
+
+        <label>Nome da Loja</label>
+        <input type="text" id="nomeLoja">
+
+        <label>Telefone</label>
+        <input type="text" id="telefone">
+
+        <label>WhatsApp</label>
+        <input type="text" id="whatsApp">
+
+        <label>Email</label>
+        <input type="email" id="email">
+
+        <label>Facebook</label>
+        <input type="text" id="facebook">
+
+        <label>Instagram</label>
+        <input type="text" id="instagram">
+
+        <label>Endereço</label>
+        <input type="text" id="endereco">
+
+        <label>Abre às</label>
+        <input type="time" id="abreAs">
+
+        <label>Fecha às</label>
+        <input type="time" id="fechaAs">
+
+        <label>Quantidade máxima de destaques</label>
+        <input
+            type="number"
+            id="quantidadeMaximaDestaques">
+
+    </section>
+
+    <div class="acoes">
+
+        <button
+            type="submit"
+            id="btnSalvar">
+
+            Salvar Alterações
+
+        </button>
+
+    </div>
+
+</form>
+
+</main>
+
+<script type="module"
+        src="/frontend/js/configuracoes.js"></script>
+
+</body>
+
+</html>
