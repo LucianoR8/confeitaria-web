@@ -145,5 +145,3 @@ banner.addEventListener("change", () => {
 
     bannerAtual.src = previewBanner;
 });
-
-configurarPreview();
