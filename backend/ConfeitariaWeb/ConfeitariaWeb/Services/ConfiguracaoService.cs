@@ -60,7 +60,7 @@ namespace ConfeitariaWeb.Services
             configuracao.WhatsApp = whatsapp;
             configuracao.Email = email;
             configuracao.Facebook = ValidarUrl(dto.Facebook);
-            configuracao.Facebook = ValidarUrl(dto.Instagram);
+            configuracao.Instagram = ValidarUrl(dto.Instagram);
             configuracao.Endereco = endereco;
             configuracao.QuantidadeMaximaDestaques = quantidade;
             configuracao.AtualizadoEm = DateTime.UtcNow;

@@ -31,6 +31,16 @@ btnVoltar.addEventListener("click", () => {
     window.location.href = "dashboard.html";
 });
 
+const btnLogo = document.getElementById("btnLogo");
+const btnIcone = document.getElementById("btnIcone");
+const btnBanner = document.getElementById("btnBanner");
+
+btnLogo.addEventListener("click", () => logo.click());
+
+btnIcone.addEventListener("click", () => icone.click());
+
+btnBanner.addEventListener("click", () => banner.click());
+
 async function carregarConfiguracao(){
 
     const configuracao = await get("/configuracoes/");

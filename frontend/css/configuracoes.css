@@ -313,3 +313,51 @@ input:focus{
     }
 
 }
+
+input[type = "file"]{
+    display: none;
+}
+
+.imagem-card img,
+#bannerAtual{
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    border: 2px dashed #dcdcdc;
+}
+
+.imagem-card img:hover,
+#bannerAtual:hover{
+
+    opacity: .9;
+
+    border-color: #4CAF50;
+
+    transform: scale(1.02);
+}
+
+.imagem-card button, #btnBanner{
+
+    margin-top: 1rem;
+
+    padding: .7rem 1rem;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #4CAF50;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.imagem-card button, #btnBanner:hover{
+
+    background: #43A047;
+}
