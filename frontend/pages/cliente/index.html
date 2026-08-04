@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title id="name"></title>
+
+    <link rel="stylesheet" href="/frontend/css/home.css">
+    <link id="favicon" rel="icon" href="">
+</head>
+
+<body>
+
+    <header>
+
+    <div class="header-container">
+
+        <button id="btnCategorias">
+
+            ☰
+
+        </button>
+
+        <div class="icone">
+
+            <img id="iconeLoja">
+
+            <h1 id="nomeLoja"></h1>
+
+        </div>
+
+    </div>
+
+</header>
+
+<nav id="drawerCategorias">
+
+    <div class="drawer-header">
+
+        <h2>Categorias</h2>
+
+        <button id="btnFecharDrawer">
+            ✕
+        </button>
+
+    </div>
+
+    <div id="listaCategorias">
+
+    </div>
+
+</nav>
+
+<div id="overlay"></div>
+
+<main>
+
+    <section id="hero">
+
+    <div class="hero-container">
+
+        <div class="hero-texto">
+
+            <h2 id="heroTitulo"></h2>
+
+            <p id="heroDescricao">
+                Doces preparados com carinho para tornar seus momentos ainda mais especiais.
+            </p>
+
+            <a href="#produtos" class="btnHero">
+                Ver Produtos
+            </a>
+
+        </div>
+
+        <div class="hero-imagem">
+
+            <img
+                id="heroLogo"
+                src=""
+                alt="Logo da loja">
+
+        </div>
+
+    </div>
+
+</section>
+
+    <section id="produtos">
+
+    <div class="container">
+
+        <h2 class="tituloSecao">
+            Produtos em Destaque
+        </h2>
+
+        <div id="listaProdutos" class="listaProdutos">
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+
+    <div class="container footer-container">
+
+        <div class="footer-info">
+
+            <h2 id="footerNomeLoja"></h2>
+
+            <p id="footerEndereco"></p>
+
+            <p>
+                <strong>Funcionamento:</strong>
+                <span id="footerHorario"></span>
+            </p>
+
+            <p>
+                <strong>Telefone:</strong>
+                <span id="footerTelefone"></span>
+            </p>
+
+            <p>
+                <strong>WhatsApp:</strong>
+                <span id="footerWhatsApp"></span>
+            </p>
+
+            <p>
+                <strong>E-mail:</strong>
+                <span id="footerEmail"></span>
+            </p>
+
+        </div>
+
+        <div class="footer-redes">
+
+            <h3>Redes Sociais</h3>
+
+            <a
+                id="footerFacebook"
+                target="_blank">
+
+                Facebook
+
+            </a>
+
+            <a
+                id="footerInstagram"
+                target="_blank">
+
+                Instagram
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-copy">
+
+        © <span id="anoAtual"></span>
+        <span id="footerCopyNome"></span>.
+        Todos os direitos reservados.
+
+    </div>
+
+</footer>
+
+    
+    <script type="module" src="/frontend/js/publico.js"></script>
+
+</body>
+
+</html>
