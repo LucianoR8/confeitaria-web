@@ -81,6 +81,8 @@ function renderizarCategorias(){
 
     });
 
+    
+
     listaCategorias.appendChild(categoriaTodos);
 
     for(const categoria of categorias){
@@ -93,6 +95,12 @@ function renderizarCategorias(){
             botao.addEventListener("click", () => {
                 fecharDrawer();
                 console.log(categoria.idCategoria);
+
+            });
+
+            botao.addEventListener("click", () => {
+
+            window.location.href = `categoria.html?id=${categoria.idCategoria}`;
 
             });
 
@@ -148,6 +156,10 @@ function renderizarProdutos(){
         <span>R$ ${Number(produto.preco).toFixed(2).replace(".",",")}</span>
         
         </div>`;
+
+        card.classList.add("produto-card");
+
+        card.style.cursor = "pointer";
 
         card.addEventListener("click", () =>{
             window.location.href = `produto.html?id=${produto.idProduto}`;
