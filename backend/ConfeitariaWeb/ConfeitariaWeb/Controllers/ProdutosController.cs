@@ -28,6 +28,19 @@ namespace ConfeitariaWeb.Controllers
             return Ok(produtos);
         }
 
+        [HttpGet("slug/{slug}")]
+        public async Task<ActionResult<ProdutoResponseDto>> ObterPorSlug(string slug)
+        {
+            var produto = await _produtoService.ObterPorSlugAsync(slug);
+
+            if(produto == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(produto);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ProdutoResponseDto>> ObterPorId(int id) 
         {

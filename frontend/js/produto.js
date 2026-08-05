@@ -12,30 +12,40 @@ async function carregarProdutos(){
 
     listaProdutos.innerHTML = "";
 
-    for(const produto of produtos){
-        const coluna = document.createElement("div");
-        
-        coluna.className = "produto-coluna";
+    for (const produto of produtos) {
 
-        coluna.innerHTML = `
-            <article class = "produto-card">
-            <img
-                src = "${produto.imagemUrl}"
-                alt = "${produto.nomeProduto}"
-                class = "produto-imagem">
+    const card = document.createElement("article");
 
-                <h3 class = "produto-nome"> ${produto.nomeProduto}</h3>
-                <p class = "produto-preco">R$ ${produto.preco}</p>
-            </article>
-            `;
+    card.className = "produto-card";
 
-        listaProdutos.appendChild(coluna);
+    card.innerHTML = `
 
-        coluna.addEventListener("click", () => {
-            window.location.href = `produto-editar.html?id=${produto.idProduto}`;
-        });
+        <img
+            src="${produto.imagemUrl}"
+            alt="${produto.nomeProduto}"
+            class="produto-imagem">
 
-    }
+        <div class="produto-info">
+
+            <h3 class="produto-nome">
+                ${produto.nomeProduto}
+            </h3>
+
+            <p class="produto-preco">
+                R$ ${Number(produto.preco).toFixed(2).replace(".", ",")}
+            </p>
+
+        </div>
+
+    `;
+
+    card.addEventListener("click", () => {
+        window.location.href =
+            `produto-editar.html?id=${produto.idProduto}`;
+    });
+
+    listaProdutos.appendChild(card);
+}
 
 }
 catch(erro){

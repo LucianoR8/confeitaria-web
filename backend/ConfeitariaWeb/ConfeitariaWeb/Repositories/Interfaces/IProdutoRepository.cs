@@ -13,6 +13,8 @@ namespace ConfeitariaWeb.Repositories.Interface
 
         Task<List<Produto>> ObterDestaquesAsync();
 
+        Task<Produto?> ObterPorSlugAsync(string slug);
+
         Task<bool> ExistePorNomeAsync(string nome, int? ignorarId = null);
 
         Task<bool> CategoriaExisteAsync(int categoriaId);

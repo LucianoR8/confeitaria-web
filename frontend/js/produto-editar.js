@@ -7,11 +7,6 @@ verificarAutenticacao();
 const parametros = new URLSearchParams(window.location.search);
 const id = parametros.get("id");
 
-const btnNovoProduto = document.getElementById("btnNovoProduto");
-
-btnNovoProduto.addEventListener("click", () =>{
-    window.location.href = "produto-novo.html";
-});
 
 const formProduto = document.getElementById("formProduto");
 const nomeProduto = document.getElementById("nomeProduto");
@@ -106,8 +101,6 @@ async function carregarCategorias(){
     console.log(categorias);
 }
 
-iniciarPagina();
-
 formProduto.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -132,3 +125,6 @@ formProduto.addEventListener("submit", async (event) => {
 
 
 });
+
+iniciarPagina();
+

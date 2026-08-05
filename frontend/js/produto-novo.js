@@ -68,7 +68,8 @@ async function carregarCategorias(){
 
         
     }
-
+    console.log(categoriaId);
+    console.log(categoriaId.innerHTML);
     console.log(categorias);
 }
 

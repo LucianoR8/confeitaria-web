@@ -1,85 +1,65 @@
 import { get } from "./api.js";
 
-const parametros = new URLSearchParams(window.location.search);
-
-const id = parametros.get("id");
-
-let categoria = null;
-
 let produtos = [];
-
 let configuracao = null;
 
-async function iniciarPagina(){
+const listaProdutos =
+    document.getElementById("listaProdutos");
 
-    await carregarCategoria();
+const btnVoltar =
+    document.getElementById("btnVoltar");
 
-    await carregarProdutos();
+btnVoltar.addEventListener("click", () => {
 
-    await carregarConfiguracao();
+    window.location.href = "index.html";
 
-    console.log(categoria);
+});
 
-    console.log(produtos);
+async function iniciar() {
 
-    renderizarCategoria();
+    produtos = await get("/produtos");
+    configuracao = await get("/configuracoes");
+
     renderizarProdutos();
     renderizarFooter();
 
 }
 
-async function carregarCategoria(){
-
-    categoria = await get(`/categorias/${id}`);
-
-}
-
-async function carregarProdutos(){
-
-    produtos = await get(`/produtos/categoria/${id}`);
-
-}
-
-async function carregarConfiguracao(){
+async function carregarConfiguracao() {
 
     configuracao = await get("/configuracoes");
 
 }
 
-const tituloCategoria = document.getElementById("tituloCategoria");
-
-
-function renderizarCategoria(){
-
-    document.title = categoria.nomeCategoria;
-
-    tituloCategoria.textContent = categoria.nomeCategoria;
-
-}
-
-const listaProdutos = document.getElementById("listaProdutos");
-
-function renderizarProdutos(){
+function renderizarProdutos() {
 
     listaProdutos.innerHTML = "";
 
-    for(const produto of produtos){
+    produtos.forEach(produto => {
 
-        const card = document.createElement("article");
+        listaProdutos.innerHTML += `
 
-        card.className = "produto-card";
+        <article
+            class="produto-card"
+            data-slug="${produto.slug}">
 
-        card.innerHTML = `
-        
             <img
                 src="${produto.imagemUrl}"
                 alt="${produto.nomeProduto}">
 
             <div class="produto-info">
 
-                <h3>${produto.nomeProduto}</h3>
+                <h3>
+                    ${produto.nomeProduto}
+                </h3>
 
-                <span class="preco">
+                <p>
+
+                    ${produto.descricaoProduto}
+
+                </p>
+
+                <span>
 
                     R$ ${Number(produto.preco).toFixed(2).replace(".", ",")}
 
@@ -87,28 +67,28 @@ function renderizarProdutos(){
 
             </div>
 
+        </article>
+
         `;
 
-        card.addEventListener("click", () =>{
+    });
 
-            window.location.href =
-                `produto.html?slug=${produto.slug}`;
+    document
+        .querySelectorAll(".produto-card")
+        .forEach(card => {
+
+            card.addEventListener("click", () => {
+
+                const slug = card.dataset.slug;
+
+                window.location.href =
+                    `produto.html?slug=${slug}`;
+
+            });
 
         });
 
-        listaProdutos.appendChild(card);
-
-    }
-
 }
-
-const btnVoltar = document.getElementById("btnVoltar");
-
-btnVoltar.addEventListener("click", () =>{
-
-    history.back();
-
-});
 
 const footerNomeLoja = document.getElementById("footerNomeLoja");
 const footerEndereco = document.getElementById("footerEndereco");
@@ -147,5 +127,4 @@ function renderizarFooter() {
 
 }
 
-iniciarPagina();
-
+iniciar();

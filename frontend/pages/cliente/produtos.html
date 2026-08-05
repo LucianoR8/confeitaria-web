@@ -5,7 +5,10 @@
 
     <meta charset="UTF-8">
 
-    <title>Produto</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Todos os Produtos</title>
 
     <link rel="stylesheet"
           href="/frontend/css/produto-publico.css">
@@ -16,62 +19,39 @@
 
 <header>
 
-    <button id="btnVoltar">
+    <div class="header-container">
 
-        ← Voltar
+        <button id="btnVoltar">
+            ← Voltar
+        </button>
 
-    </button>
+        <h1>Todos os Produtos</h1>
+
+    </div>
 
 </header>
 
 <main>
 
-    <div class="produto-container">
+<section id="produtos">
 
-        <div class="produto-imagem">
+    <div class="section-title">
 
-            <img
-                id="imagemProduto"
-                src=""
-                alt="">
+        <h2>Todos os Produtos</h2>
 
-        </div>
-
-        <div class="produto-info">
-
-            <h1 id="nomeProduto"></h1>
-
-            <span id="precoProduto"></span>
-
-            <div class="categoriaTag">
-
-                <span id="categoriaProduto"></span>
-
-            </div>
-
-            <p>
-
-                <strong>Prazo de entrega:</strong>
-
-                <span id="prazoEntrega"></span>
-
-            </p>
-
-            <p id="descricaoProduto"></p>
-
-            <a
-
-                id="btnWhatsapp"
-
-                target="_blank">
-
-                Comprar pelo WhatsApp
-
-            </a>
-
-        </div>
+        <p>
+            Conheça todos os nossos produtos.
+        </p>
 
     </div>
+
+    <div
+        id="listaProdutos"
+        class="produtos-grid">
+
+    </div>
+
+</section>
 
 </main>
 
@@ -142,7 +122,7 @@
 </footer>
 
 <script type="module"
-        src="/frontend/js/produto-publico.js"></script>
+        src="/frontend/js/produtos-publico.js"></script>
 
 </body>
 

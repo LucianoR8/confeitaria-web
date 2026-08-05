@@ -76,7 +76,7 @@ function renderizarCategorias(){
     categoriaTodos.addEventListener("click", () => {
         fecharDrawer();
 
-        console.log("Mostrar todos");
+        window.location.href = "produtos.html";
 
 
     });
@@ -162,7 +162,7 @@ function renderizarProdutos(){
         card.style.cursor = "pointer";
 
         card.addEventListener("click", () =>{
-            window.location.href = `produto.html?id=${produto.idProduto}`;
+            window.location.href = `produto.html?slug=${produto.slug}`;
 
         });
 

@@ -145,6 +145,8 @@ header{
 
 header h1{
 
+    margin: 0;
+
     font-size:2rem;
 
     color:#333;
@@ -154,6 +156,12 @@ header h1{
 
     position: absolute;
     background:#ececec;
+
+    left: 2rem;
+
+    top: 50%;
+
+    transform: translateY(-50%);
 
     border:none;
 

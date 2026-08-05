@@ -2,20 +2,27 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Painel Administrativo</title>
 
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet"
+          href="/frontend/css/dashboard.css">
+
 </head>
 
 <body>
 
-    <header>
+<header>
 
-        <h1>Confeitaria Web</h1>
+    <div class="header-container">
 
-        <div>
+        <h1></h1>
+
+        <div class="usuario">
 
             <span id="nomeUsuario"></span>
 
@@ -25,39 +32,67 @@
 
         </div>
 
-    </header>
+    </div>
 
-    <main>
+</header>
 
-        <section>
+<main>
 
-            <h2>Painel Administrativo</h2>
+    <section class="heroDashboard">
+
+        <h2>Painel Administrativo</h2>
+
+        <p>
+            Gerencie produtos, categorias e configurações da sua confeitaria.
+        </p>
+
+    </section>
+
+    <section class="cardsDashboard">
+
+        <a
+            href="produtos.html"
+            class="cardDashboard">
+
+            <h3>Produtos</h3>
 
             <p>
-                Escolha uma opção abaixo.
+                Cadastre, edite e organize os produtos da loja.
             </p>
 
-        </section>
+        </a>
 
-        <section>
+        <a
+            href="categorias.html"
+            class="cardDashboard">
 
-            <a href="produtos.html">
-                Produtos
-            </a>
 
-            <a href="categorias.html">
-                Categorias
-            </a>
+            <h3>Categorias</h3>
 
-            <a href="configuracoes.html">
-                Configurações
-            </a>
+            <p>
+                Organize os produtos em categorias.
+            </p>
 
-        </section>
+        </a>
 
-    </main>
+        <a
+            href="configuracoes.html"
+            class="cardDashboard">
 
-    <script type="module" src="/frontend/js/dashboard.js"></script>
+            <h3>Configurações</h3>
+
+            <p>
+                Personalize informações, imagens e redes sociais.
+            </p>
+
+        </a>
+
+    </section>
+
+</main>
+
+<script type="module"
+        src="/frontend/js/dashboard.js"></script>
 
 </body>
 

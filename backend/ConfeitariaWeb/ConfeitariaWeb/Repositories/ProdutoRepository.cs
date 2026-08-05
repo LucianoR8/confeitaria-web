@@ -33,6 +33,11 @@ namespace ConfeitariaWeb.Repositories
             return await _context.Produtos.Include(p => p.Categoria).Where(p => p.Destaque).OrderBy(p => p.NomeProduto).ToListAsync();
         }
 
+        public async Task<Produto?> ObterPorSlugAsync(string slug)
+        {
+            return await _context.Produtos.Include(p => p.Categoria).FirstOrDefaultAsync(p => p.Slug == slug);
+        }
+
         public async Task<bool> ExistePorNomeAsync(string nome, int? ignorarId = null)
         {
             return await _context.Produtos

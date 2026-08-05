@@ -10,36 +10,61 @@
 
     <title>Produtos</title>
 
-    <link rel="stylesheet" href="/frontend/css/produto.css">
+    <link rel="stylesheet"
+          href="/frontend/css/produto.css">
 
 </head>
 
 <body>
 
-    <header>
+<header>
+
+    <div class="header-container">
 
         <h1>Produtos</h1>
 
-        <a href="dashboard.html">
-            Voltar
+        <a href="dashboard.html"
+           class="btnVoltar">
+
+            ← Dashboard
+
         </a>
 
-    </header>
+    </div>
 
-    <main>
+</header>
 
-        <button id="btnNovoProduto">
-            Novo Produto
+<main>
+
+    <div class="topoPagina">
+
+        <div>
+
+            <h2>Gerenciar Produtos</h2>
+
+            <p>
+                Visualize, edite ou cadastre novos produtos.
+            </p>
+
+        </div>
+
+        <button id="btnNovoProduto"
+                class="btnNovo">
+
+            + Novo Produto
+
         </button>
 
-        <h2>Produtos</h2>
+    </div>
 
-<div id="listaProdutos" class="row g-4">
-</div>
+    <section id="listaProdutos">
 
-    </main>
+    </section>
 
-    <script type="module" src="/frontend/js/produto.js"></script>
+</main>
+
+<script type="module"
+        src="/frontend/js/produto.js"></script>
 
 </body>
 

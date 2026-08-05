@@ -124,6 +124,18 @@ namespace ConfeitariaWeb.Services
             return _mapper.Map<List<ProdutoResponseDto>>(produto);
         }
 
+        public async Task<ProdutoResponseDto> ObterPorSlugAsync(string slug)
+        {
+            var produto = await _produtoRepository.ObterPorSlugAsync(slug);
+
+            if(produto == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<ProdutoResponseDto>(produto);
+        }
+
         public async Task<ProdutoResponseDto> AtualizarAsync(int id, ProdutoUpdateDto dto)
         {
             if (dto == null)

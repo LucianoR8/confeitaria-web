@@ -14,6 +14,8 @@ namespace ConfeitariaWeb.Services.Interface
 
         Task<List<ProdutoResponseDto>> ObterDestaquesAsync();
 
+        Task<ProdutoResponseDto> ObterPorSlugAsync(string slug);
+
         Task<ProdutoResponseDto> AdicionarAsync(ProdutoCreateDto dto);
 
         Task<ProdutoResponseDto> AtualizarAsync(int id, ProdutoUpdateDto dto);

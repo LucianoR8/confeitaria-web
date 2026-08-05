@@ -2,20 +2,29 @@ import { get } from "./api.js";
 
 const parametros = new URLSearchParams(window.location.search);
 
-const id = parametros.get("id");
+const slug = parametros.get("slug");
 
 let produto = null;
 let configuracao = null;
 
+
+
 async function iniciarPagina(){
 
-    produto = await get(`/produtos/${id}`);
+    produto = await get(`/produtos/slug/${slug}`);
 
     configuracao = await get("/configuracoes");
 
     console.log(produto);
 
     renderizarProduto();
+    renderizarFooter();
+
+}
+
+async function carregarConfiguracao() {
+
+    configuracao = await get("/configuracoes");
 
 }
 
@@ -62,9 +71,7 @@ function renderizarProduto(){
     descricaoProduto.textContent =
         produto.descricaoProduto;
 
-}
-
-const mensagem = encodeURIComponent(
+        const mensagem = encodeURIComponent(
 
 `Olá!
 
@@ -79,3 +86,43 @@ Valor: ${precoProduto.textContent}`
 btnWhatsapp.href =
 
 `https://wa.me/55${configuracao.whatsApp}?text=${mensagem}`;
+
+}
+
+
+const footerNomeLoja = document.getElementById("footerNomeLoja");
+const footerEndereco = document.getElementById("footerEndereco");
+const footerHorario = document.getElementById("footerHorario");
+const footerTelefone = document.getElementById("footerTelefone");
+const footerWhatsApp = document.getElementById("footerWhatsApp");
+const footerEmail = document.getElementById("footerEmail");
+
+const footerFacebook = document.getElementById("footerFacebook");
+const footerInstagram = document.getElementById("footerInstagram");
+
+const footerCopyNome = document.getElementById("footerCopyNome");
+const anoAtual = document.getElementById("anoAtual"); 
+
+function renderizarFooter() {
+
+    footerNomeLoja.textContent = configuracao.nomeLoja;
+
+    footerEndereco.textContent = configuracao.endereco;
+
+    footerHorario.textContent =
+        `${configuracao.abreAs.substring(0,5)} às ${configuracao.fechaAs.substring(0,5)}`;
+
+    footerTelefone.textContent = configuracao.telefone;
+
+    footerWhatsApp.textContent = configuracao.whatsApp;
+
+    footerEmail.textContent = configuracao.email;
+
+    footerFacebook.href = configuracao.facebook;
+    footerInstagram.href = configuracao.instagram;
+
+    footerCopyNome.textContent = configuracao.nomeLoja;
+
+    anoAtual.textContent = new Date().getFullYear();
+
+}
