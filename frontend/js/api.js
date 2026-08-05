@@ -1,4 +1,4 @@
-const API_URL = "https://localhost:7072/api";
+const API_URL = "https://world-doces.onrender.com/api";
 
 export async function post(endpoint, body, isFormData = false){
 
