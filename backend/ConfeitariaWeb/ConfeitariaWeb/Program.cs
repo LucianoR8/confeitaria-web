@@ -35,7 +35,7 @@ builder.Services.AddCors(options =>
             .WithOrigins(
                 "http://127.0.0.1:5500",
                 "http://localhost:5500",
-                "https://confeitaria.lcnribeirosantos.workers.dev/")
+                "https://confeitaria.lcnribeirosantos.workers.dev")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
