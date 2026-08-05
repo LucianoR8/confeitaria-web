@@ -44,7 +44,7 @@ imagem.addEventListener("change", () => {
 const btnVoltar = document.getElementById("btnVoltar");
 
 btnVoltar.addEventListener("click", () => {
-    window.location.href = "produtos.html";
+    window.location.href = "/frontend/admin/produtos.html";
 });
 
 
@@ -104,7 +104,7 @@ formProduto.addEventListener("submit", async (event) => {
     await post(`/produtos`, formData, true);
 
     alert("Produto cadastrado com sucesso!");
-    window.location.href = "produtos.html";
+    window.location.href = "/frontend/admin/produtos.html";
     }
     catch(erro){
         alert(erro.message);

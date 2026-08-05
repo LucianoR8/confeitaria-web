@@ -13,7 +13,7 @@ const btnExcluir = document.getElementById("btnExcluir");
 const btnVoltar = document.getElementById("btnVoltar");
 
 btnVoltar.addEventListener("click", () =>{
-    window.location.href = "categorias.html";
+    window.location.href = "/frontend/admin/categorias.html";
 });
 
 async function carregarCategoria(){
@@ -34,7 +34,7 @@ formCategoria.addEventListener("submit", async (event) =>{
 
     alert("Categoria atualizada com sucesso!");
 
-    window.location.href = "categorias.html";
+    window.location.href = "/frontend/admin/categorias.html";
     }
     catch(erro){
         alert(erro.message);
@@ -53,7 +53,7 @@ btnExcluir.addEventListener("click", async () =>{
 
         alert("Categoria excluida com sucesso.");
 
-        window.location.href = "categorias.html";
+        window.location.href = "/frontend/admin/categorias.html";
     }
     catch(erro){
         alert(erro.message);

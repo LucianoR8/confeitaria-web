@@ -47,7 +47,7 @@ async function carregarConfiguracao(){
 
     console.log(configuracao);
 
-     nomeLoja.value = configuracao.nomeLoja;
+    nomeLoja.value = configuracao.nomeLoja;
     facebook.value = configuracao.facebook ?? "";
     instagram.value = configuracao.instagram ?? "";
 

@@ -5,9 +5,10 @@
 
     <meta charset="UTF-8">
 
-    <title>Categoria</title>
+    <title>Produto</title>
 
-    <link rel="stylesheet" href="/frontend/css/categoria-publica.css">
+    <link rel="stylesheet"
+          href="css/produto-publico.css">
 
 </head>
 
@@ -16,18 +17,61 @@
 <header>
 
     <button id="btnVoltar">
-        ← Voltar
-    </button>
 
-    <h1 id="tituloCategoria"></h1>
+        ← Voltar
+
+    </button>
 
 </header>
 
 <main>
 
-    <section id="listaProdutos">
+    <div class="produto-container">
 
-    </section>
+        <div class="produto-imagem">
+
+            <img
+                id="imagemProduto"
+                src=""
+                alt="">
+
+        </div>
+
+        <div class="produto-info">
+
+            <h1 id="nomeProduto"></h1>
+
+            <span id="precoProduto"></span>
+
+            <div class="categoriaTag">
+
+                <span id="categoriaProduto"></span>
+
+            </div>
+
+            <p>
+
+                <strong>Prazo de entrega:</strong>
+
+                <span id="prazoEntrega"></span>
+
+            </p>
+
+            <p id="descricaoProduto"></p>
+
+            <a
+
+                id="btnWhatsapp"
+
+                target="_blank">
+
+                Comprar pelo WhatsApp
+
+            </a>
+
+        </div>
+
+    </div>
 
 </main>
 
@@ -97,7 +141,8 @@
 
 </footer>
 
-<script type="module" src="/frontend/js/categoria-publica.js"></script>
+<script type="module"
+        src="js/produto-publico.js"></script>
 
 </body>
 

@@ -15,7 +15,7 @@ form.addEventListener("submit", async (event) => {
 
     try{
         await login(email, senha);
-        window.location.href = "dashboard.html";
+        window.location.href = "/frontend/admin/dashboard.html";
     }
     catch(erro){
         console.error(erro);

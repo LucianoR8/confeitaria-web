@@ -5,49 +5,100 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title id="name"></title>
 
-    <title>Todos os Produtos</title>
-
-    <link rel="stylesheet"
-          href="/frontend/css/produto-publico.css">
-
+    <link rel="stylesheet" href="css/home.css">
+    <link id="favicon" rel="icon" href="">
 </head>
 
 <body>
 
-<header>
+    <header>
 
     <div class="header-container">
 
-        <button id="btnVoltar">
-            ← Voltar
+        <button id="btnCategorias">
+
+            ☰
+
         </button>
 
-        <h1>Todos os Produtos</h1>
+        <div class="icone">
+
+            <img id="iconeLoja">
+
+            <h1 id="nomeLoja"></h1>
+
+        </div>
 
     </div>
 
 </header>
 
-<main>
+<nav id="drawerCategorias">
 
-<section id="produtos">
+    <div class="drawer-header">
 
-    <div class="section-title">
+        <h2>Categorias</h2>
 
-        <h2>Todos os Produtos</h2>
-
-        <p>
-            Conheça todos os nossos produtos.
-        </p>
+        <button id="btnFecharDrawer">
+            ✕
+        </button>
 
     </div>
 
-    <div
-        id="listaProdutos"
-        class="produtos-grid">
+    <div id="listaCategorias">
+
+    </div>
+
+</nav>
+
+<div id="overlay"></div>
+
+<main>
+
+    <section id="hero">
+
+    <div class="hero-container">
+
+        <div class="hero-texto">
+
+            <h2 id="heroTitulo"></h2>
+
+            <p id="heroDescricao">
+                Doces preparados com carinho para tornar seus momentos ainda mais especiais.
+            </p>
+
+            <a href="#produtos" class="btnHero">
+                Ver Produtos
+            </a>
+
+        </div>
+
+        <div class="hero-imagem">
+
+            <img
+                id="heroLogo"
+                src=""
+                alt="Logo da loja">
+
+        </div>
+
+    </div>
+
+</section>
+
+    <section id="produtos">
+
+    <div class="container">
+
+        <h2 class="tituloSecao">
+            Produtos em Destaque
+        </h2>
+
+        <div id="listaProdutos" class="listaProdutos">
+
+        </div>
 
     </div>
 
@@ -121,8 +172,8 @@
 
 </footer>
 
-<script type="module"
-        src="/frontend/js/produtos-publico.js"></script>
+    
+    <script type="module" src="js/publico.js"></script>
 
 </body>
 

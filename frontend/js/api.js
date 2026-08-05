@@ -97,7 +97,7 @@ export async function del(endpoint){
 
             alert("Sua sessão expirou. Faça login novamente.");
 
-            window.location.href = "/frontend/pages/admin/login.html";
+            window.location.href = "/frontend/admin/login.html";
 
             return;
         }

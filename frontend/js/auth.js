@@ -30,7 +30,7 @@ export function usuarioLogado(){
 
 export function verificarAutenticacao(){
     if(!usuarioLogado()){
-        window.location.href = "login.html";
+        window.location.href = "/frontend/admin/login.html";
     }
 }
 
