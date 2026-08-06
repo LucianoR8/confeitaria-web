@@ -9,7 +9,7 @@ const btnVoltar = document.getElementById("btnVoltar");
 const btnSalvar = document.getElementById("btnSalvar");
 
 btnVoltar.addEventListener("click", () => {
-    window.location.href = "/frontend/admin/categorias.html";
+    window.location.href = "categorias.html";
 });
 
 formCategoria.addEventListener("submit", async (event) => {
@@ -31,7 +31,7 @@ formCategoria.addEventListener("submit", async (event) => {
     await post("/categorias", dados);
 
     alert("Categoria cadastrada com sucesso!");
-    window.location.href = "/frontend/admin/categorias.html";
+    window.location.href = "categorias.html";
     }
     catch(erro){
         alert(erro.message);

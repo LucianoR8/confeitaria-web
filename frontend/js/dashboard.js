@@ -13,5 +13,5 @@ const btnLogout = document.getElementById("btnLogout");
 btnLogout.addEventListener("click", () => {
     logout();
 
-    window.location.href = "/frontend/admin/login.html";
+    window.location.href = "login.html";
 });

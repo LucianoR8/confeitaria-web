@@ -54,5 +54,5 @@ carregarCategorias();
 const btnNovaCategoria = document.getElementById("btnNovaCategoria");
 
 btnNovaCategoria.addEventListener("click", () => {
-    window.location.href = "/frontend/admin/categoria-novo.html";
+    window.location.href = "categoria-novo.html";
 });

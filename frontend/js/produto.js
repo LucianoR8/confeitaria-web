@@ -59,7 +59,7 @@ catch(erro){
 const btnNovoProduto = document.getElementById("btnNovoProduto");
 
 btnNovoProduto.addEventListener("click", () => {
-    window.location.href = "/frontend/admin/produto-novo.html";
+    window.location.href = "produto-novo.html";
 });
 
 

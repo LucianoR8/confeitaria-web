@@ -31,7 +31,7 @@ if(!confirmar){
 
 await del(`/produtos/${id}`);
 alert("Produto excluído com sucesso.");
-window.location.href = "/frontend/admmin/produtos.html";
+window.location.href = "produtos.html";
 
 });
 
@@ -61,7 +61,7 @@ console.log(id);
 const btnVoltar = document.getElementById("btnVoltar");
 
 btnVoltar.addEventListener("click", () => {
-    window.location.href = "/frontend/admin/produtos.html";
+    window.location.href = "produtos.html";
 })
 
 
@@ -121,7 +121,7 @@ formProduto.addEventListener("submit", async (event) => {
     await put(`/produtos/${id}`, formData, true);
 
     alert("Produto atualizado com sucesso!");
-    window.location.href = "/frontend/admin/produtos.html";
+    window.location.href = "produtos.html";
 
 
 });
