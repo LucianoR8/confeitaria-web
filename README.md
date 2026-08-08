@@ -169,20 +169,20 @@ Domínio
 
 ### Desenvolvimento
 
-- [ ] Estrutura do Front-end
-- [ ] Página Inicial
-- [ ] Página de Categoria
-- [ ] Página de Produto
+- [x] Estrutura do Front-end
+- [x] Página Inicial
+- [x] Página de Categoria
+- [x] Página de Produto
 - [x] Integração com Supabase
-- [ ] Login Administrativo
-- [ ] Dashboard
+- [x] Login Administrativo
+- [x] Dashboard
 - [x] CRUD de Produtos
 - [x] CRUD de Categorias
-- [ ] Configurações da Loja
+- [x] Configurações da Loja
 
 ### Publicação
 
-- [ ] Deploy
+- [x] Deploy
 - [ ] Domínio
 - [ ] Testes finais
 
