@@ -70,6 +70,7 @@ O sistema foi dividido em dois módulos principais:
 - Home
 - Categorias
 - Produto
+- Todos os produtos
 
 ### Área Administrativa
 
@@ -109,7 +110,7 @@ backend/
     ├── Models/
     ├── Repositories/
     ├── Services/
-    ├── Helpers/
+    ├── Mappings/
     └── Program.cs
 
 docs/
@@ -124,7 +125,7 @@ frontend/
 ├── components/
 ├── css/
 ├── js/
-├── pages/
+├── admin/
 └── index.html
 ```
 
@@ -153,7 +154,7 @@ Banco de Dados
 
 Domínio
 
-- Registro.br (.com.br)
+- Locaweb (.com.br)
 
 ---
 
@@ -195,11 +196,10 @@ Domínio
 - Pesquisa de produtos;
 - Sistema de promoções;
 - Área de pedidos;
-- Carrinho de compras;
-- Pagamento online;
-- Controle de estoque;
 - Área do cliente;
 - Dashboard com estatísticas.
+- Ícones de bibliotecas externas.
+- Hero personalizável.
 
 ---
 
@@ -212,7 +212,7 @@ Durante o desenvolvimento deste projeto foram estudados e aplicados conceitos co
 - Desenvolvimento de API REST com ASP.NET Core;
 - Entity Framework Core;
 - Integração entre API e PostgreSQL (Supabase);
-- Organização de projetos em camadas;
+- Organização de projetos em camadas(Repository Pattern);
 - Documentação técnica;
 - Estruturação de projetos para clientes reais.
 
